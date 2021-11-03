@@ -18,15 +18,11 @@ db.then(() => {
 export const storage = db.get('multisig_calls')
 
 const polkadot = ENDPOINTS_MAP.polkadot
-const darwinia = ENDPOINTS_MAP.darwinia
 const kusama = ENDPOINTS_MAP.kusama
-const crab = ENDPOINTS_MAP.crab
 
 // Start Crawlers here
 runCrawlers((new WsProvider(polkadot.wss)), polkadot.types, storage)
-runCrawlers((new WsProvider(darwinia.wss)), darwinia.types, storage)
 runCrawlers((new WsProvider(kusama.wss)), kusama.types, storage)
-runCrawlers((new WsProvider(crab.wss)), crab.types, storage)
 
 // Start the server
 const port = Number(process.env.PORT || 9000)
